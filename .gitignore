@@ -1,4 +1,3 @@
-
 # Created by https://www.gitignore.io/api/osx,bower,node,webstorm
 .idea
 
@@ -71,6 +70,9 @@ build/Release
 node_modules
 jspm_packages
 
+# just add node_modules in src to keep libs.
+!src/node_modules
+
 # Optional npm cache directory
 .npm
 
@@ -130,10 +132,4 @@ fabric.properties
 # *.iml
 # modules.xml
 
-#ignore build folder
-src/generated/
 
-src/generatedSwagger.json
-src/lambda_config.json
-backtory_config.json
-backtory_sdk_config.json

@@ -1,0 +1,87 @@
+{
+    "registerUser": {
+        "handlerName": "generated/AuthController.registerUser",
+        "timeLimitInMilliSeconds": 6000,
+        "memoryLimit": 128
+    },
+    "login": {
+        "handlerName": "generated/AuthController.login",
+        "timeLimitInMilliSeconds": 6000,
+        "memoryLimit": 128
+    },
+    "refreshLogin": {
+        "handlerName": "generated/AuthController.refreshLogin",
+        "timeLimitInMilliSeconds": 6000,
+        "memoryLimit": 128
+    },
+    "forgotPassword": {
+        "handlerName": "generated/AuthController.forgotPassword",
+        "timeLimitInMilliSeconds": 6000,
+        "memoryLimit": 128
+    },
+    "editProfile": {
+        "handlerName": "generated/AuthController.editProfile",
+        "timeLimitInMilliSeconds": 6000,
+        "memoryLimit": 128
+    },
+    "getProfile": {
+        "handlerName": "generated/AuthController.getProfile",
+        "timeLimitInMilliSeconds": 6000,
+        "memoryLimit": 128
+    },
+    "getUserProfile": {
+        "handlerName": "generated/AuthController.getUserProfile",
+        "timeLimitInMilliSeconds": 6000,
+        "memoryLimit": 128
+    },
+    "movieList": {
+        "handlerName": "generated/MovieController.getMovieList",
+        "timeLimitInMilliSeconds": 6000,
+        "memoryLimit": 128
+    },
+    "getMovie": {
+        "handlerName": "generated/MovieController.getMovieDetails",
+        "timeLimitInMilliSeconds": 6000,
+        "memoryLimit": 128
+    },
+    "addToFavorite": {
+        "handlerName": "generated/UserFavoriteController.addToFavorite",
+        "timeLimitInMilliSeconds": 6000,
+        "memoryLimit": 128
+    },
+    "removeFromFavorite": {
+        "handlerName": "generated/UserFavoriteController.removeFromFavorite",
+        "timeLimitInMilliSeconds": 6000,
+        "memoryLimit": 128
+    },
+    "getUserFavoriteMovies": {
+        "handlerName": "generated/UserFavoriteController.getFavorites",
+        "timeLimitInMilliSeconds": 6000,
+        "memoryLimit": 128
+    },
+    "getUserFavoriteMoviesById": {
+        "handlerName": "generated/UserFavoriteController.getUserFavorites",
+        "timeLimitInMilliSeconds": 6000,
+        "memoryLimit": 128
+    },
+    "addRating": {
+        "handlerName": "generated/UserRatingController.addReview",
+        "timeLimitInMilliSeconds": 6000,
+        "memoryLimit": 128
+    },
+    "getMovieRatings": {
+        "handlerName": "generated/UserRatingController.getRates",
+        "timeLimitInMilliSeconds": 6000,
+        "memoryLimit": 128
+    },
+    "hello": {
+        "handlerName": "generated/indexController.hello",
+        "timeLimitInMilliSeconds": 6000,
+        "memoryLimit": 128
+    },
+    "info": {
+        "handlerName": "generated/indexController.info",
+        "timeLimitInMilliSeconds": 6000,
+        "memoryLimit": 128
+    }
+}

@@ -1,0 +1,794 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "-14",
+        "title": "Instagram"
+    },
+    "paths": {
+        "/registerUser": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "required": true,
+                        "format": "string",
+                        "type": "string"
+                    },
+                    {
+                        "name": "fullName",
+                        "in": "query",
+                        "required": true,
+                        "format": "string",
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "required": true,
+                        "format": "string",
+                        "type": "string"
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "required": true,
+                        "format": "string",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "AuthController.registerUser",
+                        "schema": {
+                            "$ref": "#/definitions/RegisterUserResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/login": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "username",
+                        "in": "query",
+                        "required": true,
+                        "format": "string",
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "required": true,
+                        "format": "string",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "AuthController.login",
+                        "schema": {
+                            "$ref": "#/definitions/LoginUserResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/refreshLogin": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "refreshToken",
+                        "in": "query",
+                        "required": true,
+                        "format": "string",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "AuthController.refreshLogin",
+                        "schema": {
+                            "$ref": "#/definitions/LoginUserResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/forgotPassword": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "username",
+                        "in": "query",
+                        "required": true,
+                        "format": "string",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "AuthController.forgotPassword",
+                        "schema": {
+                            "$ref": "#/definitions/FailedSuccessResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/editProfile": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "fullName",
+                        "in": "query",
+                        "required": false,
+                        "format": "string",
+                        "type": "string"
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "required": false,
+                        "format": "string",
+                        "type": "string"
+                    },
+                    {
+                        "name": "profilePic",
+                        "in": "query",
+                        "required": false,
+                        "format": "string",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "AuthController.editProfile",
+                        "schema": {
+                            "$ref": "#/definitions/FailedSuccessUserInfoResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/getProfile": {
+            "post": {
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "AuthController.getProfile",
+                        "schema": {
+                            "$ref": "#/definitions/FailedSuccessUserInfoResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/getUserProfile": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "format": "string",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "AuthController.getUserProfile",
+                        "schema": {
+                            "$ref": "#/definitions/FailedSuccessUserInfoResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/movieList": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "skip",
+                        "in": "query",
+                        "required": false,
+                        "format": "integer",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "format": "integer",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "MovieController.getMovieList",
+                        "schema": {
+                            "$ref": "#/definitions/MovieListItemResponseList"
+                        }
+                    }
+                }
+            }
+        },
+        "/getMovie": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "format": "string",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "MovieController.getMovieDetails",
+                        "schema": {
+                            "$ref": "#/definitions/MovieFullResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/addToFavorite": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "format": "string",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "UserFavoriteController.addToFavorite",
+                        "schema": {
+                            "$ref": "#/definitions/FailedSuccessResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/removeFromFavorite": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "format": "string",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "UserFavoriteController.removeFromFavorite",
+                        "schema": {
+                            "$ref": "#/definitions/FailedSuccessResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/getUserFavoriteMovies": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "skip",
+                        "in": "query",
+                        "required": false,
+                        "format": "integer",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "format": "integer",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "UserFavoriteController.getFavorites",
+                        "schema": {
+                            "$ref": "#/definitions/MovieListItemResponseList"
+                        }
+                    }
+                }
+            }
+        },
+        "/getUserFavoriteMoviesById": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "format": "string",
+                        "type": "string"
+                    },
+                    {
+                        "name": "skip",
+                        "in": "query",
+                        "required": false,
+                        "format": "integer",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "format": "integer",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "UserFavoriteController.getUserFavorites",
+                        "schema": {
+                            "$ref": "#/definitions/MovieListItemResponseList"
+                        }
+                    }
+                }
+            }
+        },
+        "/addRating": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "movieId",
+                        "in": "query",
+                        "required": true,
+                        "format": "string",
+                        "type": "string"
+                    },
+                    {
+                        "name": "text",
+                        "in": "query",
+                        "required": true,
+                        "format": "string",
+                        "type": "string"
+                    },
+                    {
+                        "name": "rate",
+                        "in": "query",
+                        "required": true,
+                        "format": "number",
+                        "type": "number"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "UserRatingController.addReview",
+                        "schema": {
+                            "$ref": "#/definitions/FailedSuccessResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/getMovieRatings": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "format": "string",
+                        "type": "string"
+                    },
+                    {
+                        "name": "skip",
+                        "in": "query",
+                        "required": false,
+                        "format": "integer",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "format": "integer",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "UserRatingController.getRates",
+                        "schema": {
+                            "$ref": "#/definitions/UserRatingListResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/hello": {
+            "post": {
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "just returns hello if user is logged In :)",
+                        "schema": {
+                            "$ref": "#/definitions/FailedSuccessResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/info": {
+            "post": {
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "returns app information",
+                        "schema": {
+                            "$ref": "#/definitions/AppInfoResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "RegisterUserResponse": {
+            "properties": {
+                "userId": {
+                    "format": "id",
+                    "type": "string"
+                },
+                "email": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "accessToken": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "tokenType": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "refreshToken": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "expiresIn": {
+                    "format": "integer",
+                    "type": "integer"
+                },
+                "scope": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "jti": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "success": {
+                    "format": "boolean",
+                    "type": "boolean"
+                },
+                "message": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "code": {
+                    "format": "integer",
+                    "type": "integer"
+                },
+                "stack": {
+                    "format": "string",
+                    "type": "string"
+                }
+            }
+        },
+        "LoginUserResponse": {
+            "properties": {
+                "accessToken": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "tokenType": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "refreshToken": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "expiresIn": {
+                    "format": "integer",
+                    "type": "integer"
+                },
+                "scope": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "jti": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "success": {
+                    "format": "boolean",
+                    "type": "boolean"
+                },
+                "message": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "code": {
+                    "format": "integer",
+                    "type": "integer"
+                },
+                "stack": {
+                    "format": "string",
+                    "type": "string"
+                }
+            }
+        },
+        "FailedSuccessResponse": {
+            "properties": {
+                "success": {
+                    "format": "boolean",
+                    "type": "boolean"
+                },
+                "message": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "code": {
+                    "format": "integer",
+                    "type": "integer"
+                },
+                "stack": {
+                    "format": "string",
+                    "type": "string"
+                }
+            }
+        },
+        "UserInfoResponse": {
+            "properties": {
+                "userId": {
+                    "format": "id",
+                    "type": "string"
+                },
+                "fullName": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "email": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "imageUri": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "description": {
+                    "format": "string",
+                    "type": "string"
+                }
+            }
+        },
+        "FailedSuccessUserInfoResponse": {
+            "properties": {
+                "userInfo": {
+                    "$ref": "#/definitions/UserInfoResponse"
+                },
+                "success": {
+                    "format": "boolean",
+                    "type": "boolean"
+                },
+                "message": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "code": {
+                    "format": "integer",
+                    "type": "integer"
+                },
+                "stack": {
+                    "format": "string",
+                    "type": "string"
+                }
+            }
+        },
+        "MovieListItemResponse": {
+            "properties": {
+                "id": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "name": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "releaseDate": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "posterUrl": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "director": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "rateCount": {
+                    "format": "number",
+                    "type": "number"
+                },
+                "totalStars": {
+                    "format": "number",
+                    "type": "number"
+                },
+                "isInFavorite": {
+                    "format": "boolean",
+                    "type": "boolean"
+                }
+            }
+        },
+        "MovieListItemResponseList": {
+            "properties": {
+                "movies": {
+                    "format": "array",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/MovieListItemResponse"
+                    }
+                },
+                "success": {
+                    "format": "boolean",
+                    "type": "boolean"
+                },
+                "message": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "code": {
+                    "format": "integer",
+                    "type": "integer"
+                },
+                "stack": {
+                    "format": "string",
+                    "type": "string"
+                }
+            }
+        },
+        "MovieFullResponse": {
+            "properties": {
+                "id": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "name": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "releaseDate": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "posterUrl": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "director": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "production": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "writer": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "actors": {
+                    "format": "array",
+                    "type": "array",
+                    "items": {
+                        "format": "string",
+                        "type": "string"
+                    }
+                },
+                "rateCount": {
+                    "format": "number",
+                    "type": "number"
+                },
+                "totalStars": {
+                    "format": "number",
+                    "type": "number"
+                },
+                "plot": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "country": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "boxOffice": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "runTime": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "genre": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "isInFavorite": {
+                    "format": "boolean",
+                    "type": "boolean"
+                }
+            }
+        },
+        "UserRatingResponse": {
+            "properties": {
+                "user": {
+                    "$ref": "#/definitions/UserInfoResponse"
+                },
+                "rate": {
+                    "format": "number",
+                    "type": "number"
+                },
+                "text": {
+                    "format": "string",
+                    "type": "string"
+                }
+            }
+        },
+        "UserRatingListResponse": {
+            "properties": {
+                "rates": {
+                    "format": "array",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/UserRatingResponse"
+                    }
+                },
+                "success": {
+                    "format": "boolean",
+                    "type": "boolean"
+                },
+                "message": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "code": {
+                    "format": "integer",
+                    "type": "integer"
+                },
+                "stack": {
+                    "format": "string",
+                    "type": "string"
+                }
+            }
+        },
+        "AppInfoResponse": {
+            "properties": {
+                "name": {
+                    "format": "string",
+                    "type": "string"
+                },
+                "version": {
+                    "format": "string",
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

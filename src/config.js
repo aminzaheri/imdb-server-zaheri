@@ -5,7 +5,7 @@ config.objectSorageInstanceId = "5969d3c4e4b0a69c4974be3a";
 config.integratedMasterKey = "140f8891a1224de19fcc9945";
 config.clientKey = "5969d3c3e4b0fc0b3ebbc009";
 config.cloudCode = "5969d3c4e4b0a69c4974be42";
-config.cdnInstanceId = "5969d3c4e4b0a69c4974be3a";
+config.cdnInstanceId = "5969d4d1e4b0a69c4974c5a9";
 
 config.baseUrl = "http://storage.backtory.com/imdbZaheri";
 

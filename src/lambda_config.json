@@ -44,6 +44,16 @@
         "timeLimitInMilliSeconds": 6000,
         "memoryLimit": 128
     },
+    "addMovie": {
+        "handlerName": "generated/MovieController.addMovie",
+        "timeLimitInMilliSeconds": 6000,
+        "memoryLimit": 128
+    },
+    "getMoviesListByName": {
+        "handlerName": "generated/MovieController.getMoviesListByName",
+        "timeLimitInMilliSeconds": 6000,
+        "memoryLimit": 128
+    },
     "addToFavorite": {
         "handlerName": "generated/UserFavoriteController.addToFavorite",
         "timeLimitInMilliSeconds": 6000,

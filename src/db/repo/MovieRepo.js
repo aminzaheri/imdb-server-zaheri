@@ -43,6 +43,7 @@ module.exports.getMoviesByListOfId = function(movieIds){
 module.exports.getMoviesByName = function(movieName,skip,limit){
     let query = new Backtory.Query(Movie);
     query.contains("name", movieName);
+    query.descending(Movie.Col.CreationDate);
     query.skip(skip);
     query.limit(limit);
     return Promisify.wrapWithThis(query.find, query);

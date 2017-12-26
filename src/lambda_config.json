@@ -39,6 +39,11 @@
         "timeLimitInMilliSeconds": 6000,
         "memoryLimit": 128
     },
+    "categoryList": {
+        "handlerName": "generated/MovieController.getCategoryList",
+        "timeLimitInMilliSeconds": 6000,
+        "memoryLimit": 128
+    },
     "getMovie": {
         "handlerName": "generated/MovieController.getMovieDetails",
         "timeLimitInMilliSeconds": 6000,

@@ -78,14 +78,26 @@ exports.getMovieList = function (activeUser, userSkip, userLimit, MovieRepo, Mov
     });
 };
 
+exports.getCategoryList = function (activeUser, userSkip, userLimit, MovieRepo, MovieResponseHelper) {
+    let userId = activeUser.userId;
+        return MovieRepo.getCategories(userSkip, userLimit)
+    .then(function(list){
+        //console.log(list);
+        return MovieResponseHelper.makeCategoryResponseList(list, userId);
+        //return list;
+    });
+};
+
 exports.getMoviesListByName = function (requestData, activeUser, MovieRepo, MovieResponseHelper) {
     console.log(requestData);
     let name = requestData.name.value();
     let skip = requestData.skip.value();
     let limit = requestData.limit.value();
-    let userId = activeUser.userId;    
+    let userId = activeUser.userId;
+    console.log('amin');
         return MovieRepo.getMoviesByName(name,skip,limit)
-    .then(function(list){    
+    .then(function(list){
+        console.log('khoshgel');
         return MovieResponseHelper.makeMovieResponseList(list, userId);
     });
 };

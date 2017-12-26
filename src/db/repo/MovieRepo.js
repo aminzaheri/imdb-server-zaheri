@@ -2,7 +2,7 @@
  * Created by Mine on 6/13/2016.
  */
 'use strict';
-const Movie = require("../data/Movie");
+const Category = require("../data/Category");
 const Promisify = require("../../util/Promisify");
 const Backtory = require("../../provider/LibsProvider").backtory();
 const ErrorCodes = require("../../util/ErrorCodes");
@@ -17,6 +17,13 @@ module.exports = {};
 module.exports.getMovies = function (skip, limit) {
     let query = new Backtory.Query(Movie);
     query.descending(Movie.Col.CreationDate);
+    query.skip(skip);
+    query.limit(limit);
+    return Promisify.wrapWithThis(query.find, query);
+};
+module.exports.getCategories = function (skip, limit) {
+    let query = new Backtory.Query(Category);
+    query.descending(Category.Col.CreationDate);
     query.skip(skip);
     query.limit(limit);
     return Promisify.wrapWithThis(query.find, query);

@@ -6,6 +6,10 @@
 var original = originalModule.getMovies; 
  return original. apply( null, arguments); 
   }; 
+  module.exports.getCategories = function ( skip , limit ) { 
+var original = originalModule.getCategories; 
+ return original. apply( null, arguments); 
+  }; 
   module.exports.getMoviesByName = function ( name ,skip , limit ) { 
 var original = originalModule.getMoviesByName; 
  return original. apply( null, arguments); 

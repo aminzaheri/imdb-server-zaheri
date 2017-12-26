@@ -46,6 +46,45 @@ function makeMovieResponseList(movieList, userId, UserFavoriteRepo, MovieListIte
     });
 }
 
+module.exports.makeCategoryResponseList = makeCategoryResponseList;
+function makeCategoryResponseList(categoryList, userId, CategoryListItemResponse){
+    console.log(categoryList);
+    let toReturn = [];
+    if(!categoryList){
+        return Promise.resolve({categories: toReturn});
+    }
+    categoryList.forEach(function(category){
+            let toAdd = new CategoryListItemResponse();
+            //toAdd.initFromData(movie, favoriteMap[movie.getId()]);
+            toAdd.initFromData(category);
+            toReturn.push(toAdd);
+    });
+    /*let categoryIdSet = new Set();
+    categoryList.forEach(function(item){
+       categoryIdSet.add(item.getId());
+    });
+    let categoryIdList = Array.from(categoryIdSet);
+console.log(categoryIdList);
+  //  let favoriteMap = {};
+    /*return UserFavoriteRepo.getUserFavoriteItemListById(userId, movieIdList).then(function(favoriteList){
+        if(!favoriteList || favoriteList.length <=0 ){
+            return;
+        }
+        favoriteList.forEach(function (favorite) {
+            favoriteMap[favorite.getMovieId()] = favorite;
+        });
+    }).then(function(){*/
+        /*categoryList.forEach(function(category){
+            let toAdd = new CategoryListItemResponse();
+            //toAdd.initFromData(movie, favoriteMap[movie.getId()]);
+            toAdd.initFromData(category);
+            toReturn.push(toAdd);
+        });*/
+        //console.log(toReturn);
+        return {categories: toReturn};
+    //});
+}
+
 /**
  * @AutoWired()
  */

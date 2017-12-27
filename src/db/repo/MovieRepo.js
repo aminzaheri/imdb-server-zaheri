@@ -3,6 +3,7 @@
  */
 'use strict';
 const Category = require("../data/Category");
+const Movie = require("../data/Movie");
 const Promisify = require("../../util/Promisify");
 const Backtory = require("../../provider/LibsProvider").backtory();
 const ErrorCodes = require("../../util/ErrorCodes");

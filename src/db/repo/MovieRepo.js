@@ -56,6 +56,14 @@ module.exports.getMoviesByName = function(movieName,skip,limit){
     query.limit(limit);
     return Promisify.wrapWithThis(query.find, query);
 };
+module.exports.getCategoryMoviesByName = function(categoryName,skip,limit){
+    let query = new Backtory.Query(Movie);
+    query.contains("genre", categoryName);
+    query.descending(Movie.Col.CreationDate);
+    query.skip(skip);
+    query.limit(limit);
+    return Promisify.wrapWithThis(query.find, query);
+};
 
 module.exports.updateMovieRating = function(movie, starInc, countInc){
         let updatedMovie = new Movie();

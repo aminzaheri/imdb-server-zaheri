@@ -14,6 +14,10 @@ var original = originalModule.getCategories;
 var original = originalModule.getMoviesByName; 
  return original. apply( null, arguments); 
   }; 
+   module.exports.getCategoryMoviesByName = function ( categoryName ,skip , limit ) { 
+var original = originalModule.getCategoryMoviesByName; 
+ return original. apply( null, arguments); 
+  }; 
    module.exports.getMovieById = function ( movieId ) { 
 var original = originalModule.getMovieById; 
  return original. apply( null, arguments); 

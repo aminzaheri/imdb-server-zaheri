@@ -7,6 +7,7 @@
 
 const Promisify = require("../util/Promisify");
 const Movie = require("../db/data/Movie");
+const config = require("../config");
 
 exports.addMovie = function (Backtory, UserInfoRepo, ErrorCodes, MergeObject, requestData) {
 
@@ -42,9 +43,9 @@ exports.addMovie = function (Backtory, UserInfoRepo, ErrorCodes, MergeObject, re
         movieInfo.setReleaseDate(requestData.date.value());
         movieInfo.setPlot(requestData.comment.value());
         //movieInfo.setPoster(DefaultUserProfilePic + user['movieId']);
-        movieInfo.setPoster(requestData.image.value());
+        movieInfo.setPoster(config.baseUrl+requestData.image.value());
 
-        console.log(requestData.actors.value());
+        console.log(config.baseUrl);
         
         return Promisify.wrapWithThis(movieInfo.save, movieInfo);
     //};//.then(function (saveResponse) {

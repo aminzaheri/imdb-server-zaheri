@@ -43,7 +43,8 @@ UserInfoResponse.prototype.initFromData = function (userInfo, isPrivate) {
             userId: userInfo.getUserId(),
             fullName: userInfo.getFullName(),
             imageUri: userInfo.getProfilePic(),
-            description: userInfo.getDescription()
+            description: userInfo.getDescription(),
+            isAdmin : userInfo.getIsAdmin()
         }
     } else {
         data = {
@@ -51,7 +52,8 @@ UserInfoResponse.prototype.initFromData = function (userInfo, isPrivate) {
             fullName: userInfo.getFullName(),
             email: userInfo.getEmail(),
             imageUri: userInfo.getProfilePic(),
-            description: userInfo.getDescription()
+            description: userInfo.getDescription(),
+            isAdmin : userInfo.getIsAdmin()
         }
     }
     this.init(data);

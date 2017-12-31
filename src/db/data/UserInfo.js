@@ -13,6 +13,7 @@ var UserInfo = Backtory.Object.extend('UserInfo',{
     getDescription(){return this.get(UserInfo.Col.DESCRIPTION)},
     getProfilePic(){return this.get(UserInfo.Col.PROFILE_PIC)},
     getEmail(){return this.get(UserInfo.Col.EMAIL)},
+    getIsAdmin(){return this.get(UserInfo.Col.IS_ASDMIN)},
     getFavoriteMovies(){return this.get(UserInfo.Col.FavoriteMovies)},
 
     setId(value){this.set(UserInfo.Col.ID, value)},
@@ -21,6 +22,7 @@ var UserInfo = Backtory.Object.extend('UserInfo',{
     setDescription(value){this.set(UserInfo.Col.DESCRIPTION, value)},
     setProfilePic(value){this.set(UserInfo.Col.PROFILE_PIC, value)},
     setEmail(value){this.set(UserInfo.Col.EMAIL, value)},
+    setIsAdmin(value){this.set(UserInfo.Col.IS_ASDMIN, value)},
 },{
     get Name(){return 'UserInfo'},
 });
@@ -31,6 +33,7 @@ UserInfo.Col = {
     get DESCRIPTION(){return 'description'},
     get PROFILE_PIC(){return 'profilePic'},
     get EMAIL(){return 'email'},
+    get IS_ASDMIN(){return 'isAdmin'},
 };
 
 Backtory.Object.registerSubclass(UserInfo.Name, UserInfo);

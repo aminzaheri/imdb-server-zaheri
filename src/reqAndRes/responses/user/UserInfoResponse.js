@@ -29,6 +29,7 @@ UserInfoResponse.prototype.init = function () {
     this.email = new StringField();
     this.imageUri = new StringField();
     this.description = new StringField();
+    this.isAdmin = new BooleanField();
     BaseObject.prototype.init.apply(this, arguments);
 };
 

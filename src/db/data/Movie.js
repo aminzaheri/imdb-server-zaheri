@@ -19,6 +19,9 @@ var Movie = Backtory.Object.extend('Movie',{
     getBoxOffice(){return this.get(Movie.Col.BoxOffice)},
     getTotalRateCount() {return this.get(Movie.Col.TotalRateCount)},
     getTotalStars() {return this.get(Movie.Col.TotalStars)},
+    getLink1() {return this.get(Movie.Col.Link1)},
+    getLink2() {return this.get(Movie.Col.Link2)},
+    getLink3() {return this.get(Movie.Col.Link3)},
 
     setId(value){this.set(Movie.Col.Id, value)},
     setName(value){this.set(Movie.Col.Name, value)},
@@ -34,7 +37,10 @@ var Movie = Backtory.Object.extend('Movie',{
     setCountry(value){this.set(Movie.Col.Country, value)},
     setBoxOffice(value){this.set(Movie.Col.BoxOffice, value)},
     setTotalRateCount(value) {return this.set(Movie.Col.TotalRateCount, value)},
-    setTotalStars(value) {return this.set(Movie.Col.TotalStars, value)}
+    setTotalStars(value) {return this.set(Movie.Col.TotalStars, value)},
+    setLink1(value) {return this.set(Movie.Col.Link1, value)},
+    setLink2(value) {return this.set(Movie.Col.Link2, value)},
+    setLink3(value) {return this.set(Movie.Col.Link3, value)},
 },{
     get Name(){return 'Movie'},
 });
@@ -54,7 +60,10 @@ Movie.Col = {
     get BoxOffice(){return 'boxOffice'},
     get CreationDate(){return 'createdAt'},
     get TotalRateCount() {return 'totalRateCount'},
-    get TotalStars() {return "totalStars"}
+    get TotalStars() {return "totalStars"},
+    get Link1() {return "link1"},
+    get Link2() {return "link2"},
+    get Link3() {return "link3"}
 };
 
 Backtory.Object.registerSubclass(Movie.Name, Movie);

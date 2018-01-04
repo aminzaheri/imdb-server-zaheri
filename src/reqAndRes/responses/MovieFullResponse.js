@@ -35,6 +35,9 @@ MovieFullResponse.prototype.init = function(){
     this.runTime = new StringField();
     this.genre = new StringField();
     this.isInFavorite = new BooleanField();
+    this.link1 = new StringField();
+    this.link2 = new StringField();
+    this.link3 = new StringField();
     BaseObject.prototype.init.apply(this, arguments);
 };
 
@@ -58,6 +61,9 @@ MovieFullResponse.prototype.initFromData = function(movie, userFavorite){
         boxOffice:movie.getBoxOffice(),
         runTime:movie.getRunTime(),
         genre:movie.getGenre(),
+        link1:movie.getLink1(),
+        link2:movie.getLink2(),
+        link3:movie.getLink3(),
         isInFavorite: !!userFavorite,
     };
     this.init(data);

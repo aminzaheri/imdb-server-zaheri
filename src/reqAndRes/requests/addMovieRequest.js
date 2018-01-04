@@ -25,6 +25,9 @@ addMovieRequest.prototype.init = function(){
     this.box_office = new StringField(true);
     this.runtime = new StringField(true);
     this.date = new StringField(true);
+    this.link1 = new StringField(true);
+    this.link2 = new StringField(true);
+    this.link3 = new StringField(true);
     this.comment = new StringField(true);
     this.image = new StringField(true);
     ValidatableObject.prototype.init.apply(this, arguments);

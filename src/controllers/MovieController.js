@@ -22,6 +22,9 @@ exports.addMovie = function (Backtory, UserInfoRepo, ErrorCodes, MergeObject, re
         "box_office": requestData.box_office.value(),
         "runtime": requestData.runtime.value(),
         "date": requestData.date.value(),
+        "link1": requestData.date.value(),
+        "link2": requestData.date.value(),
+        "link3": requestData.date.value(),
         "comment": requestData.comment.value(),
         "image": requestData.image.value()
     };
@@ -38,6 +41,9 @@ exports.addMovie = function (Backtory, UserInfoRepo, ErrorCodes, MergeObject, re
         movieInfo.setActors(requestData.actors.value());
         movieInfo.setCountry(requestData.country.value());
         movieInfo.setGenre(requestData.genre.value());
+        movieInfo.setLink1(requestData.link1.value());
+        movieInfo.setLink2(requestData.link2.value());
+        movieInfo.setLink3(requestData.link3.value());
         movieInfo.setBoxOffice(requestData.box_office.value());
         movieInfo.setRuntime(requestData.runtime.value());
         movieInfo.setReleaseDate(requestData.date.value());

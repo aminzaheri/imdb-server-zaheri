@@ -23,8 +23,9 @@ MovieListItemResponse.prototype.init = function(){
     this.releaseDate = new StringField();
     this.posterUrl = new StringField();
     this.director = new StringField();
+    this.imdb = new StringField();
     this.rateCount = new NumberField();
-    this.totalStars = new NumberField();
+    this.totalStars = new NumberField();    
     this.isInFavorite = new BooleanField();
     BaseObject.prototype.init.apply(this, arguments);
 };
@@ -39,6 +40,7 @@ MovieListItemResponse.prototype.initFromData = function(movie, userFavorite){
         releaseDate: movie.getReleaseDate(),
         posterUrl: movie.getPoster(),
         director: movie.getDirector(),
+        imdb: movie.getImdb(),
         rateCount: movie.getTotalRateCount(),
         totalStars: movie.getTotalStars(),
         isInFavorite: !!userFavorite

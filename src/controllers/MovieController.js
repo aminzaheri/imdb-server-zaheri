@@ -22,11 +22,13 @@ exports.addMovie = function (Backtory, UserInfoRepo, ErrorCodes, MergeObject, re
         "box_office": requestData.box_office.value(),
         "runtime": requestData.runtime.value(),
         "date": requestData.date.value(),
-        "link1": requestData.date.value(),
-        "link2": requestData.date.value(),
-        "link3": requestData.date.value(),
+        "link1": requestData.link1.value(),
+        "link2": requestData.link2.value(),
+        "link3": requestData.link3.value(),
+        "subtitle": requestData.subtitle.value(),
+        "imdb": requestData.imdb.value(),
         "comment": requestData.comment.value(),
-        "image": requestData.image.value()
+        "image": requestData.image.value(),
     };
     let savedMovie = undefined;
     //let promise = Promisify.wrap(Backtory.Users.signUp, user);
@@ -44,6 +46,8 @@ exports.addMovie = function (Backtory, UserInfoRepo, ErrorCodes, MergeObject, re
         movieInfo.setLink1(requestData.link1.value());
         movieInfo.setLink2(requestData.link2.value());
         movieInfo.setLink3(requestData.link3.value());
+        movieInfo.setImdb(requestData.imdb.value());
+        movieInfo.setSubtitle(requestData.subtitle.value());
         movieInfo.setBoxOffice(requestData.box_office.value());
         movieInfo.setRuntime(requestData.runtime.value());
         movieInfo.setReleaseDate(requestData.date.value());

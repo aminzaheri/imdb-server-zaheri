@@ -28,6 +28,8 @@ addMovieRequest.prototype.init = function(){
     this.link1 = new StringField(true);
     this.link2 = new StringField(true);
     this.link3 = new StringField(true);
+    this.subtitle = new StringField(true);
+    this.imdb = new StringField(true);
     this.comment = new StringField(true);
     this.image = new StringField(true);
     ValidatableObject.prototype.init.apply(this, arguments);

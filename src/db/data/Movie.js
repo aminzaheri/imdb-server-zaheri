@@ -22,6 +22,8 @@ var Movie = Backtory.Object.extend('Movie',{
     getLink1() {return this.get(Movie.Col.Link1)},
     getLink2() {return this.get(Movie.Col.Link2)},
     getLink3() {return this.get(Movie.Col.Link3)},
+    getSubtitle() {return this.get(Movie.Col.Subtitle)},
+    getImdb() {return this.get(Movie.Col.Imdb)},
 
     setId(value){this.set(Movie.Col.Id, value)},
     setName(value){this.set(Movie.Col.Name, value)},
@@ -41,6 +43,8 @@ var Movie = Backtory.Object.extend('Movie',{
     setLink1(value) {return this.set(Movie.Col.Link1, value)},
     setLink2(value) {return this.set(Movie.Col.Link2, value)},
     setLink3(value) {return this.set(Movie.Col.Link3, value)},
+    setSubtitle(value) {return this.set(Movie.Col.Subtitle, value)},
+    setImdb(value) {return this.set(Movie.Col.Imdb, value)},
 },{
     get Name(){return 'Movie'},
 });
@@ -63,7 +67,9 @@ Movie.Col = {
     get TotalStars() {return "totalStars"},
     get Link1() {return "link1"},
     get Link2() {return "link2"},
-    get Link3() {return "link3"}
+    get Link3() {return "link3"},
+    get Subtitle() {return "subtitle"},
+    get Imdb() {return "imdb"},
 };
 
 Backtory.Object.registerSubclass(Movie.Name, Movie);

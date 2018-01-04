@@ -38,6 +38,8 @@ MovieFullResponse.prototype.init = function(){
     this.link1 = new StringField();
     this.link2 = new StringField();
     this.link3 = new StringField();
+    this.subtitle = new StringField();
+    this.imdb = new StringField();
     BaseObject.prototype.init.apply(this, arguments);
 };
 
@@ -64,6 +66,8 @@ MovieFullResponse.prototype.initFromData = function(movie, userFavorite){
         link1:movie.getLink1(),
         link2:movie.getLink2(),
         link3:movie.getLink3(),
+        subtitle:movie.getSubtitle(),
+        imdb:movie.getImdb(),
         isInFavorite: !!userFavorite,
     };
     this.init(data);

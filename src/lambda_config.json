@@ -54,6 +54,11 @@
         "timeLimitInMilliSeconds": 6000,
         "memoryLimit": 128
     },
+    "editMovie": {
+        "handlerName": "generated/MovieController.editMovie",
+        "timeLimitInMilliSeconds": 6000,
+        "memoryLimit": 128
+    },
     "getMoviesListByName": {
         "handlerName": "generated/MovieController.getMoviesListByName",
         "timeLimitInMilliSeconds": 6000,

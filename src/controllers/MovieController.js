@@ -70,6 +70,69 @@ exports.addMovie = function (Backtory, UserInfoRepo, ErrorCodes, MergeObject, re
 };
 
 
+exports.editMovie = function (Backtory, UserInfoRepo, ErrorCodes, MergeObject, requestData) {
+
+    let movie = {
+        "name": requestData.name.value(),
+        "director": requestData.director.value(),
+        "production": requestData.production.value(),
+        "writer": requestData.writer.value(),
+        "actors": requestData.actors.value(),
+        "country": requestData.country.value(),
+        "genre": requestData.genre.value(),
+        "box_office": requestData.box_office.value(),
+        "runtime": requestData.runtime.value(),
+        "date": requestData.date.value(),
+        "link1": requestData.link1.value(),
+        "link2": requestData.link2.value(),
+        "link3": requestData.link3.value(),
+        "subtitle": requestData.subtitle.value(),
+        "imdb": requestData.imdb.value(),
+        "comment": requestData.comment.value(),
+        "image": requestData.image.value(),
+    };
+    let savedMovie = undefined;
+    //let promise = Promisify.wrap(Backtory.Users.signUp, user);
+    //return promise.then(function (movie) {
+    //return function (movie) {
+        let movieInfo = new Movie();
+        movieInfo.setId(requestData.id.value());
+        movieInfo.setName(requestData.name.value());
+        movieInfo.setDirector(requestData.director.value());
+        movieInfo.setProduction(requestData.production.value());
+        movieInfo.setWriter(requestData.writer.value());
+        movieInfo.setActors(requestData.actors.value());
+        movieInfo.setCountry(requestData.country.value());
+        movieInfo.setGenre(requestData.genre.value());
+        movieInfo.setLink1(requestData.link1.value());
+        movieInfo.setLink2(requestData.link2.value());
+        movieInfo.setLink3(requestData.link3.value());
+        movieInfo.setImdb(requestData.imdb.value());
+        movieInfo.setSubtitle(requestData.subtitle.value());
+        movieInfo.setBoxOffice(requestData.box_office.value());
+        movieInfo.setRuntime(requestData.runtime.value());
+        movieInfo.setReleaseDate(requestData.date.value());
+        movieInfo.setPlot(requestData.comment.value());
+        //movieInfo.setPoster(DefaultUserProfilePic + user['movieId']);
+        movieInfo.setPoster(config.baseUrl+requestData.image.value());
+
+        console.log(config.baseUrl);
+        
+        return Promisify.wrapWithThis(movieInfo.save, movieInfo);
+    //};//.then(function (saveResponse) {
+        //savedMovie = saveResponse;
+        //return loginInternal(saveResponse.getEmail(), requestData.password.value());
+    //}).then(function (loginResult) {
+      //  return MergeObject({
+        //    userId: savedUser.getId(),
+          //  email: savedUser.getEmail()
+        //}, loginResult)
+    //});
+};
+
+
+
+
 /**
  * @AutoWired()
  * @Controller()

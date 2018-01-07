@@ -59,6 +59,11 @@
         "timeLimitInMilliSeconds": 6000,
         "memoryLimit": 128
     },
+    "deleteMovie": {
+        "handlerName": "generated/MovieController.deleteMovie",
+        "timeLimitInMilliSeconds": 6000,
+        "memoryLimit": 128
+    },
     "getMoviesListByName": {
         "handlerName": "generated/MovieController.getMoviesListByName",
         "timeLimitInMilliSeconds": 6000,

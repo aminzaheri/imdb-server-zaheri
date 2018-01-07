@@ -131,6 +131,16 @@ exports.editMovie = function (Backtory, UserInfoRepo, ErrorCodes, MergeObject, r
 };
 
 
+exports.deleteMovie = function (Backtory, UserInfoRepo, ErrorCodes, MergeObject, requestData) {
+    
+    let savedMovie = undefined;    
+        let movieInfo = new Movie();
+        movieInfo.setId(requestData.id.value());                
+        
+        return Promisify.wrapWithThis(movieInfo.destroy, movieInfo);    
+};
+
+
 
 
 /**

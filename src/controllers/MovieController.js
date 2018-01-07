@@ -7,6 +7,7 @@
 
 const Promisify = require("../util/Promisify");
 const Movie = require("../db/data/Movie");
+const Category = require("../db/data/Category");
 const config = require("../config");
 
 exports.addMovie = function (Backtory, UserInfoRepo, ErrorCodes, MergeObject, requestData) {
@@ -30,11 +31,9 @@ exports.addMovie = function (Backtory, UserInfoRepo, ErrorCodes, MergeObject, re
         "comment": requestData.comment.value(),
         "image": requestData.image.value(),
     };
-    let savedMovie = undefined;
-    //let promise = Promisify.wrap(Backtory.Users.signUp, user);
-    //return promise.then(function (movie) {
-    //return function (movie) {
+    let savedMovie = undefined;    
         let movieInfo = new Movie();
+        let categoryInfo = new Category();
         movieInfo.setId(movie['movieId']);
         movieInfo.setName(requestData.name.value());
         movieInfo.setDirector(requestData.director.value());
@@ -51,22 +50,25 @@ exports.addMovie = function (Backtory, UserInfoRepo, ErrorCodes, MergeObject, re
         movieInfo.setBoxOffice(requestData.box_office.value());
         movieInfo.setRuntime(requestData.runtime.value());
         movieInfo.setReleaseDate(requestData.date.value());
-        movieInfo.setPlot(requestData.comment.value());
-        //movieInfo.setPoster(DefaultUserProfilePic + user['movieId']);
+        movieInfo.setPlot(requestData.comment.value());        
         movieInfo.setPoster(config.baseUrl+requestData.image.value());
 
-        console.log(config.baseUrl);
-        
-        return Promisify.wrapWithThis(movieInfo.save, movieInfo);
-    //};//.then(function (saveResponse) {
-        //savedMovie = saveResponse;
-        //return loginInternal(saveResponse.getEmail(), requestData.password.value());
-    //}).then(function (loginResult) {
-      //  return MergeObject({
-        //    userId: savedUser.getId(),
-          //  email: savedUser.getEmail()
-        //}, loginResult)
-    //});
+        let promise = Promisify.wrapWithThis(movieInfo.save, movieInfo);
+
+        return promise.then(function(){
+            let query = new Backtory.Query(Category);
+            query.contains("categoryName", requestData.genre.value());
+            query.descending(Category.Col.CreationDate);            
+            query.skip(0);
+            query.limit(1);
+            return Promisify.wrapWithThis(query.find, query);
+        }).then(function(resultCategory){
+            resultCategory.forEach(function(item){
+                item.setCount(item.getCount()+1);                
+                return Promisify.wrapWithThis(item.save, item);
+            });             
+            
+        });
 };
 
 
@@ -141,6 +143,33 @@ exports.deleteMovie = function (Backtory, UserInfoRepo, ErrorCodes, MergeObject,
 };
 
 
+exports.addCategory = function (Backtory, UserInfoRepo, ErrorCodes, MergeObject, requestData) {
+    
+    let savedCategory = undefined;    
+        let categoryInfo = new Category();        
+        categoryInfo.setCategoryName(requestData.categoryName.value());        
+        
+        return Promisify.wrapWithThis(categoryInfo.save, categoryInfo);    
+};
+
+exports.editCategory = function (Backtory, UserInfoRepo, ErrorCodes, MergeObject, requestData) {
+    
+    let savedCategory = undefined;
+        let categoryInfo = new Category();
+        categoryInfo.setId(requestData.id.value());
+        categoryInfo.setCategoryName(requestData.categoryName.value());        
+        
+        return Promisify.wrapWithThis(categoryInfo.save, categoryInfo);    
+};
+
+exports.deleteCategory = function (Backtory, UserInfoRepo, ErrorCodes, MergeObject, requestData) {
+    
+    let savedCategory = undefined;    
+        let categoryInfo = new Category();
+        categoryInfo.setId(requestData.id.value());                
+        
+        return Promisify.wrapWithThis(categoryInfo.destroy, categoryInfo);    
+};
 
 
 /**

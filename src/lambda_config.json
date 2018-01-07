@@ -64,6 +64,21 @@
         "timeLimitInMilliSeconds": 6000,
         "memoryLimit": 128
     },
+    "addCategory": {
+        "handlerName": "generated/MovieController.addCategory",
+        "timeLimitInMilliSeconds": 6000,
+        "memoryLimit": 128
+    },
+    "editCategory": {
+        "handlerName": "generated/MovieController.editCategory",
+        "timeLimitInMilliSeconds": 6000,
+        "memoryLimit": 128
+    },
+    "deleteCategory": {
+        "handlerName": "generated/MovieController.deleteCategory",
+        "timeLimitInMilliSeconds": 6000,
+        "memoryLimit": 128
+    },
     "getMoviesListByName": {
         "handlerName": "generated/MovieController.getMoviesListByName",
         "timeLimitInMilliSeconds": 6000,

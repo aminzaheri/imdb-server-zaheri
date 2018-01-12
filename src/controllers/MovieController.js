@@ -8,6 +8,7 @@
 const Promisify = require("../util/Promisify");
 const Movie = require("../db/data/Movie");
 const Category = require("../db/data/Category");
+const MovieRepo = require("../db/repo/MovieRepo");
 const config = require("../config");
 
 exports.addMovie = function (Backtory, UserInfoRepo, ErrorCodes, MergeObject, requestData) {
@@ -136,10 +137,44 @@ exports.editMovie = function (Backtory, UserInfoRepo, ErrorCodes, MergeObject, r
 exports.deleteMovie = function (Backtory, UserInfoRepo, ErrorCodes, MergeObject, requestData) {
     
     let savedMovie = undefined;    
-        let movieInfo = new Movie();
-        movieInfo.setId(requestData.id.value());                
-        
-        return Promisify.wrapWithThis(movieInfo.destroy, movieInfo);    
+                    
+
+    return MovieRepo.getMovieById(requestData.id.value()).then(function(movie){
+        let query = new Backtory.Query(Category);
+        query.contains("categoryName", movie.getGenre());
+        query.descending(Category.Col.CreationDate);            
+        query.skip(0);
+        query.limit(1);
+        return Promisify.wrapWithThis(query.find, query);
+    }).then(function(resultCategory){
+        resultCategory.forEach(function(item){
+                item.setCount(item.getCount()-1);            
+                return Promisify.wrapWithThis(item.save, item);                
+            });
+            }).then(function(){
+                let movieInfo = new Movie();
+                movieInfo.setId(requestData.id.value());
+                return Promisify.wrapWithThis(movieInfo.destroy, movieInfo);
+            });                        
+    
+    /*}).then(function(){
+        let promise = Promisify.wrapWithThis(movieInfo.destroy, movieInfo);
+
+    return promise.then(function(){
+        let query = new Backtory.Query(Category);
+        query.contains("categoryName", categoryName);
+        query.descending(Category.Col.CreationDate);            
+        query.skip(0);
+        query.limit(1);
+        return Promisify.wrapWithThis(query.find, query);
+        }).then(function(resultCategory){
+            resultCategory.forEach(function(item){
+                item.setCount(item.getCount()-1);                
+                return Promisify.wrapWithThis(item.save, item);
+            });                
+            
+        });
+});*/
 };
 
 

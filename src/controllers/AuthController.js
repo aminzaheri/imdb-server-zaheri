@@ -9,7 +9,6 @@ var unirest = require("unirest");
 var authUrl = 'https://api.backtory.com/auth';
 const Promisify = require("../util/Promisify");
 const UserInfo = require("../db/data/UserInfo");
-
 const DefaultUserProfilePic = "https://robohash.org/";
 
 /**

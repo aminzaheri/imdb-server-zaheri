@@ -117,7 +117,7 @@ exports.editMovie = function (Backtory, UserInfoRepo, ErrorCodes, MergeObject, r
         movieInfo.setReleaseDate(requestData.date.value());
         movieInfo.setPlot(requestData.comment.value());
         //movieInfo.setPoster(DefaultUserProfilePic + user['movieId']);
-        movieInfo.setPoster(config.baseUrl+requestData.image.value());
+        movieInfo.setPoster(requestData.image.value());
 
         console.log(config.baseUrl);
         

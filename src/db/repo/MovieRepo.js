@@ -2,6 +2,7 @@
  * Created by Mine on 6/13/2016.
  */
 'use strict';
+const SlideShow = require("../data/SlideShow");
 const Category = require("../data/Category");
 const Movie = require("../data/Movie");
 const Promisify = require("../../util/Promisify");
@@ -28,6 +29,14 @@ module.exports.getCategories = function (skip, limit) {
     query.skip(skip);
     query.limit(limit);
     return Promisify.wrapWithThis(query.find, query);
+};
+module.exports.getSlideShow = function (id) {
+    let query = new Backtory.Query(SlideShow);
+    query.equalTo(SlideShow.Col.Id, id);
+    query.limit(1);
+    return Promisify.wrapWithThis(query.find, query).then(function(results){        
+        return results[0];
+    })
 };
 
 module.exports.getMovieById = function(movieId){

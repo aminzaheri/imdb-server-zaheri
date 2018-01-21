@@ -8,6 +8,7 @@
 const Promisify = require("../util/Promisify");
 const Movie = require("../db/data/Movie");
 const Category = require("../db/data/Category");
+const SlideShow = require("../db/data/SlideShow");
 const MovieRepo = require("../db/repo/MovieRepo");
 const config = require("../config");
 
@@ -229,13 +230,10 @@ exports.getMovieList = function (activeUser, userSkip, userLimit, MovieRepo, Mov
 exports.getCategoryList = function (activeUser, userSkip, userLimit, MovieRepo, MovieResponseHelper) {
     let userId = activeUser.userId;
         return MovieRepo.getCategories(userSkip, userLimit)
-    .then(function(list){
-        //console.log(list);
-        return MovieResponseHelper.makeCategoryResponseList(list, userId);
-        //return list;
+    .then(function(list){        
+        return MovieResponseHelper.makeCategoryResponseList(list, userId);        
     });
 };
-
 
 exports.getMoviesListByName = function (requestData, activeUser, MovieRepo, MovieResponseHelper) {    
     let name = requestData.name.value();
@@ -275,4 +273,24 @@ exports.getMovieDetails = function (requestData, activeUser, MovieRepo, MovieRes
     return MovieRepo.getMovieById(movieId).then(function(movie){
         return MovieResponseHelper.makeFullMovieResponse(movie, userId);
     });
+};
+
+exports.getSlideShowList = function (requestData, activeUser, MovieRepo, MovieResponseHelper) {
+    let id = requestData.id.value();
+    let userId = activeUser.userId;
+    return MovieRepo.getSlideShow(id).then(function(slideShow){
+        return MovieResponseHelper.makeSlideShowResponse(slideShow, userId);
+    });
+};
+exports.editSlideShow = function (Backtory, UserInfoRepo, ErrorCodes, MergeObject, requestData) {
+    
+    let savedSlideShow = undefined;
+        let slideShow = new SlideShow();
+        slideShow.setId(requestData.id.value());
+        slideShow.setImage1(requestData.image1.value());
+        slideShow.setImage2(requestData.image2.value());
+        slideShow.setImage3(requestData.image3.value());
+        slideShow.setImage4(requestData.image4.value());
+        
+        return Promisify.wrapWithThis(slideShow.save, slideShow);    
 };

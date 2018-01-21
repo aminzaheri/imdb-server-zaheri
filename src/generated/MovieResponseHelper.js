@@ -12,6 +12,11 @@ var original = originalModule.makeCategoryResponseList;
  original =  runAround( original, originalModule, __dirname, "../annotationRuntimeModules/AutoWired_AspectItem_75053.js", "aspect", "{\"originalArguments\":[\"categoryList\",\"userId\",\"CategoryListItemResponse\"],\"autoWiredModules\":{\"CategoryListItemResponse\":{\"moduleName\":\"CategoryListItemResponse\",\"moduleAddress\":\"../reqAndRes/responses/CategoryListItemResponse.js\"}}}"); 
  return original. apply( null, arguments); 
   }; 
+  module.exports.makeSlideShowResponse = function ( slideShowList , userId ) { 
+var original = originalModule.makeSlideShowResponse; 
+ original =  runAround( original, originalModule, __dirname, "../annotationRuntimeModules/AutoWired_AspectItem_75053.js", "aspect", "{\"originalArguments\":[\"slideShowList\",\"userId\",\"SlideShowResponse\"],\"autoWiredModules\":{\"SlideShowResponse\":{\"moduleName\":\"SlideShowResponse\",\"moduleAddress\":\"../reqAndRes/responses/SlideShowResponse.js\"}}}"); 
+ return original. apply( null, arguments); 
+  }; 
    module.exports.makeFullMovieResponse = function ( movie , userId ) { 
 var original = originalModule.makeFullMovieResponse; 
  original =  runAround( original, originalModule, __dirname, "../annotationRuntimeModules/AutoWired_AspectItem_75053.js", "aspect", "{\"originalArguments\":[\"movie\",\"userId\",\"UserFavoriteRepo\",\"MovieFullResponse\"],\"autoWiredModules\":{\"UserFavoriteRepo\":{\"moduleName\":\"UserFavoriteRepo\",\"moduleAddress\":\"../generated/UserFavoriteRepo.js\"},\"MovieFullResponse\":{\"moduleName\":\"MovieFullResponse\",\"moduleAddress\":\"../reqAndRes/responses/MovieFullResponse.js\"}}}"); 

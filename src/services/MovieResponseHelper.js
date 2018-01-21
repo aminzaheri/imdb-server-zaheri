@@ -55,35 +55,11 @@ function makeCategoryResponseList(categoryList, userId, CategoryListItemResponse
     }
     categoryList.forEach(function(category){
             let toAdd = new CategoryListItemResponse();
-            //toAdd.initFromData(movie, favoriteMap[movie.getId()]);
             toAdd.initFromData(category);
             toReturn.push(toAdd);
     });
-    /*let categoryIdSet = new Set();
-    categoryList.forEach(function(item){
-       categoryIdSet.add(item.getId());
-    });
-    let categoryIdList = Array.from(categoryIdSet);
-console.log(categoryIdList);
-  //  let favoriteMap = {};
-    /*return UserFavoriteRepo.getUserFavoriteItemListById(userId, movieIdList).then(function(favoriteList){
-        if(!favoriteList || favoriteList.length <=0 ){
-            return;
-        }
-        favoriteList.forEach(function (favorite) {
-            favoriteMap[favorite.getMovieId()] = favorite;
-        });
-    }).then(function(){*/
-        /*categoryList.forEach(function(category){
-            let toAdd = new CategoryListItemResponse();
-            //toAdd.initFromData(movie, favoriteMap[movie.getId()]);
-            toAdd.initFromData(category);
-            toReturn.push(toAdd);
-        });*/
-        //console.log(toReturn);
         return {categories: toReturn};
-    //});
-}
+};
 
 /**
  * @AutoWired()
@@ -100,6 +76,17 @@ module.exports.makeFullMovieResponse = function(movie, userId, UserFavoriteRepo,
         return toAdd
     });
 
+};
+
+module.exports.makeSlideShowResponse = function(slideShow, userId, SlideShowResponse){
+
+    if(!slideShow){
+
+        return Promise.resolve(undefined);
+    }
+        let toAdd = new SlideShowResponse();
+        toAdd.initFromData(slideShow);
+        return toAdd
 };
 
 /**

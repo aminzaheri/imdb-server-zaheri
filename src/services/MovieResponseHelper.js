@@ -89,6 +89,21 @@ module.exports.makeSlideShowResponse = function(slideShow, userId, SlideShowResp
         return toAdd
 };
 
+    /*let toReturn = [];
+    if(!slideShowList){
+        return Promise.resolve({slideShows: toReturn});
+    }
+    slideShowList.forEach(function(slideShow){
+        console.log(slideShow);
+            let toAdd = new SlideShowResponse();
+            toAdd.initFromData(slideShow);
+            toReturn.push(toAdd);
+    });
+    console.log("ttttttttttttttttttttttttttttttt");
+    console.log(toReturn);
+        return {slideShows: toReturn};
+
+};*/
 /**
  * @AutoWired()
  */

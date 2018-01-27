@@ -246,6 +246,26 @@ exports.getMoviesListByName = function (requestData, activeUser, MovieRepo, Movi
     });
 };
 
+exports.getMoviesListByImdb = function (requestData, activeUser, MovieRepo, MovieResponseHelper) {    
+    let imdb = requestData.imdb.value();
+    let skip = requestData.skip.value();
+    let limit = requestData.limit.value();
+    let userId = activeUser.userId;    
+        return MovieRepo.getMoviesByImdb(imdb,skip,limit)
+    .then(function(list){        
+        return MovieResponseHelper.makeMovieResponseList(list, userId);
+    });
+};
+
+exports.getMovieListByVisit = function (activeUser, userSkip, userLimit, MovieRepo, MovieResponseHelper) {
+    let userId = activeUser.userId;
+    return MovieRepo.addAllMoviesToDbIfNeeded().then(function(result){
+        return MovieRepo.getMoviesByVisit(userSkip, userLimit)
+    }).then(function(list){
+        return MovieResponseHelper.makeMovieResponseList(list, userId);
+    });
+};
+
 exports.getCategoryMoviesListByName = function (requestData, activeUser, MovieRepo, MovieResponseHelper) {    
     let name = requestData.categoryName.value();
     let skip = requestData.skip.value();
@@ -270,15 +290,20 @@ exports.getCategoryMoviesListByName = function (requestData, activeUser, MovieRe
 exports.getMovieDetails = function (requestData, activeUser, MovieRepo, MovieResponseHelper) {
     let movieId = requestData.id.value();
     let userId = activeUser.userId;
+    let movieInfo = new Movie
     return MovieRepo.getMovieById(movieId).then(function(movie){
-        return MovieResponseHelper.makeFullMovieResponse(movie, userId);
+        movieInfo = movie;
+        movie.setVisit(movie.getVisit() + 1);
+        return Promisify.wrapWithThis(movie.save, movie);
+    }).then(function(){
+        return MovieResponseHelper.makeFullMovieResponse(movieInfo, userId);
     });
 };
 
 exports.getSlideShowList = function (requestData, activeUser, MovieRepo, MovieResponseHelper) {
     let id = requestData.id.value();
     let userId = activeUser.userId;
-    return MovieRepo.getSlideShow(id).then(function(slideShow){
+    return MovieRepo.getSlideShow(id).then(function(slideShow){        
         return MovieResponseHelper.makeSlideShowResponse(slideShow, userId);
     });
 };

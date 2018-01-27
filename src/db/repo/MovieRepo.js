@@ -35,7 +35,8 @@ module.exports.getSlideShow = function (id) {
     query.equalTo(SlideShow.Col.Id, id);
     query.limit(1);
     return Promisify.wrapWithThis(query.find, query).then(function(results){        
-        return results[0];
+        return results[0];        
+        return results;
     })
 };
 
@@ -61,6 +62,21 @@ module.exports.getMoviesByName = function(movieName,skip,limit){
     let query = new Backtory.Query(Movie);
     query.contains("name", movieName);
     query.descending(Movie.Col.CreationDate);
+    query.skip(skip);
+    query.limit(limit);
+    return Promisify.wrapWithThis(query.find, query);
+};
+module.exports.getMoviesByImdb = function(imdb,skip,limit){
+    let query = new Backtory.Query(Movie);
+    query.contains("imdb", imdb);
+    query.descending(Movie.Col.CreationDate);
+    query.skip(skip);
+    query.limit(limit);
+    return Promisify.wrapWithThis(query.find, query);
+};
+module.exports.getMoviesByVisit = function(skip,limit){
+    let query = new Backtory.Query(Movie);
+    query.descending(Movie.Col.Visit);
     query.skip(skip);
     query.limit(limit);
     return Promisify.wrapWithThis(query.find, query);

@@ -48,6 +48,7 @@ module.exports.getMovieRating = function (movieId, skip, limit) {
     let query = new Backtory.Query(UserRating);
     query.equalTo(UserRating.Col.MovieId, movieId);
     query.descending(UserRating.Col.CreationDate);
+    query.equalTo(UserRating.Col.Accept , true);
     query.skip(skip);
     query.limit(limit);
     return Promisify.wrapWithThis(query.find, query);

@@ -13,12 +13,14 @@ var UserRating = Backtory.Object.extend('UserRating',{
     getRate(){return this.get(UserRating.Col.Rate)},
     getText(){return this.get(UserRating.Col.Text)},
     getCreationDate(){return this.get(UserRating.Col.CreationDate)},
+    getAccept(){return this.get(UserRating.Col.Accept)},
 
     setId(value){this.set(UserRating.Col.ID, value)},
     setUserId(value){this.set(UserRating.Col.UserId, value)},
     setMovieId(value){this.set(UserRating.Col.MovieId, value)},
     setRate(value){this.set(UserRating.Col.Rate, value)},
     setText(value){this.set(UserRating.Col.Text, value)},
+    setText(value){this.set(UserRating.Col.Accept, value)},
 },{
     get Name(){return 'UserRating'},
 });
@@ -29,7 +31,7 @@ UserRating.Col = {
     get Rate(){return 'rate'},
     get Text(){return 'text'},
     get CreationDate(){return 'createdAt'},
-
+    get Accept(){return 'accept'},
 };
 
 Backtory.Object.registerSubclass(UserRating.Name, UserRating);

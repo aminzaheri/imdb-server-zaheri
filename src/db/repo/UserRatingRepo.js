@@ -36,8 +36,8 @@ module.exports.addRating = function(userId, movieId, rate, text, MovieRepo){
             rateInc = rate;
             countInc = 1;
         }
-        toSave.setRate(rate);
-        toSave.setText(text);
+        toSave.setRate(rate);        
+        toSave.setText(text);        
         return Promisify.wrapWithThis(toSave.save, toSave)
     }).then(function(result){
         return MovieRepo.updateMovieRating(movieObj, rateInc, countInc);

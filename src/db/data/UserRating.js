@@ -20,7 +20,7 @@ var UserRating = Backtory.Object.extend('UserRating',{
     setMovieId(value){this.set(UserRating.Col.MovieId, value)},
     setRate(value){this.set(UserRating.Col.Rate, value)},
     setText(value){this.set(UserRating.Col.Text, value)},
-    setText(value){this.set(UserRating.Col.Accept, value)},
+    setAccept(value){this.set(UserRating.Col.Accept, value)},
 },{
     get Name(){return 'UserRating'},
 });
